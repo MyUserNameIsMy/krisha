@@ -10,7 +10,7 @@ class Item(BaseModel):
 
 
 async def get_content(link):
-    browser = await launch(headless=True)
+    browser = await launch(headless=True, options={'args': ['--no-sandbox']})
     page = await browser.newPage()
     await page.goto(link)
     html_content = await page.content()
